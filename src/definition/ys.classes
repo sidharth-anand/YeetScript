@@ -1,0 +1,26 @@
+[KEYWORDS]
+    int
+
+[UPPERCASE]
+    [A-Z]
+
+[LOWERCASE]
+    [a-z]
+
+[CHARACTER]
+    [a-z]
+    [A-Z]
+
+[DIGIT]
+    [0-9]
+
+[COMPARISON]
+    <
+    >
+    =
+    !
+    :
+
+[DELIMITER]
+    :
+    ;

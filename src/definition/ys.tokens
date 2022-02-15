@@ -1,0 +1,12 @@
+[TOKENS]
+    KEYWORD
+    IDENTIFIER
+    WHITESPACE
+    DELIMITER
+
+    [LITERALS]
+        INTEGER
+        FLOAT
+
+    [OPERATORS]
+        COMPARISON
