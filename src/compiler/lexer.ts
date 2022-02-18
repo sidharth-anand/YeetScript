@@ -55,6 +55,13 @@ export default class Lexer {
             if (matchingRule.emitToken) {
                 const tokenTypes = matchingRule.emitToken;
 
+                const keywordsClass = this._classes.find(classDefinition => classDefinition.name === 'KEYWORDS');
+
+                if (keywordsClass) {
+                    if(keywordsClass.checkMatch(processedCharacters.join('')))
+                        tokenTypes[0] = this._tokenTypes.find(tokenType => tokenType.name === 'KEYWORD')!;
+                }
+
                 const token = new Token(processedCharacters.length ? processedCharacters.join('') : character, lineNumber, i - processedCharacters.length - lastLineIndex + 1, tokenTypes[0]);
                 tokens.push(token);
 

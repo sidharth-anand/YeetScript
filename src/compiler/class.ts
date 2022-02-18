@@ -18,7 +18,7 @@ export default class Class {
     }
 
     public checkMatch(character: string): boolean {
-        if (character.length > 1)
+        if (character.length > 1 && this._name !== 'KEYWORDS')
             throw new Error("The checkMatch function accepts only single characters");
 
         return this.matches.some(match => match.test(character));
