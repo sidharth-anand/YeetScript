@@ -40,6 +40,6 @@ export default class Token {
     }
 
     public toFormattedString(): string {
-        return `${chalk.greenBright(this._tokenString).padEnd(25)} ${chalk.cyanBright(`[${this._information.fullyQualifiedName}]`).padEnd(50)} (Ln ${this._lineNumber.toString().padStart(2)}, Col ${this._characterNumber.toString().padStart(2)})`;
+        return `${chalk.greenBright(this._tokenString === '\n' ? ' ' : this._tokenString).padEnd(25)} ${chalk.cyanBright(`[${this._information.fullyQualifiedName}]`).padEnd(50)} (Ln ${this._lineNumber.toString().padStart(2)}, Col ${this._characterNumber.toString().padStart(2)})`;
     }
 }

@@ -29,6 +29,9 @@ export default class Lexer {
     }
 
     public tokenize(input: string): Array<Token> {
+        input = input.replace('\t', ' ');
+        input = input.replace('    ', ' ');
+
         const tokens: Array<Token> = [];
 
         let lineNumber = 1;
@@ -45,38 +48,41 @@ export default class Lexer {
 
             if (character == '\n') {
                 lineNumber++;
-                lastLineIndex = i + 1;
-
-                continue;
+                lastLineIndex = i - 1;
             }
 
             const matchingRule = this._currentState.getMatchingRule(character);
 
             if (matchingRule.emitToken) {
-                const tokenTypes = matchingRule.emitToken;
+                let tokenType = matchingRule.emitToken;
 
                 const keywordsClass = this._classes.find(classDefinition => classDefinition.name === 'KEYWORDS');
 
                 if (keywordsClass) {
                     if(keywordsClass.checkMatch(processedCharacters.join('')))
-                        tokenTypes[0] = this._tokenTypes.find(tokenType => tokenType.name === 'KEYWORD')!;
+                        tokenType = this._tokenTypes.find(tokenType => tokenType.name === 'KEYWORD')!;
                 }
 
-                const token = new Token(processedCharacters.length ? processedCharacters.join('') : character, lineNumber, i - processedCharacters.length - lastLineIndex + 1, tokenTypes[0]);
+                const token = new Token(processedCharacters.join(''), lineNumber, i - processedCharacters.length - lastLineIndex + 1, tokenType);
                 tokens.push(token);
 
-                if (tokenTypes.length == 2) {
-                    const secondaryToken = new Token(character, lineNumber, i - lastLineIndex + 1, tokenTypes[1]);
-                    tokens.push(secondaryToken);
-                }
-
                 processedCharacters = [];
-
-            } else {
-                processedCharacters.push(character);
             }
 
+            processedCharacters.push(character);
+        
             this._currentState = matchingRule.outgoingState;
+        }
+
+        if (processedCharacters.length > 0) {
+            const matchingRule = this._currentState.getMatchingRule('\n');
+
+            if (matchingRule.emitToken) {
+                let tokenType = matchingRule.emitToken;
+
+                const token = new Token(processedCharacters.join(''), lineNumber, input.length - lastLineIndex, tokenType);
+                tokens.push(token);
+            }
         }
 
         return tokens;
@@ -98,7 +104,7 @@ export default class Lexer {
     private initializeStates(): void {
         const statesFile = readFileSync(this._languageDefinition.states);
 
-        const stateDefinitions = statesFile.toString().split(/\[[A-Z]*\]/g).map(d => d.trim()).filter(d => d.length > 0);
+        const stateDefinitions = statesFile.toString().split(/\[[A-Z]*\]/g).map(d => d.trim().split('\n')).flat().map(d => d.trim()).filter(d => d.length > 0);
 
         stateDefinitions.forEach(stateName => {
             this._states.push(new State(stateName));
@@ -124,18 +130,10 @@ export default class Lexer {
             } else {
                 const emitDefinition = definition[2].split(' emit ');
 
-                const tokenTypes = emitDefinition[1].split('/').map(d => {
-                    const tokenType = this._tokenTypes.find(tokenType => tokenType.name === d)
-
-                    if (!tokenType)
-                        throw new Error(`No token type with name ${emitDefinition[1]} found`);
-                    
-                    return tokenType;
-                });
-
+                const tokenType = this._tokenTypes.find(type => type.name === emitDefinition[1]);
                 const outgoingState = this.getStateByName(emitDefinition[0]);
 
-                incomingState.addOutgoingRule(new Rule(outgoingState, matchTarget, tokenTypes));
+                incomingState.addOutgoingRule(new Rule(outgoingState, matchTarget, tokenType));
             }
         });
     }

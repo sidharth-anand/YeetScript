@@ -1,15 +1,15 @@
 {
-  "name": "YeetScript",
+  "name": "yeetscript",
   "version": "0.0.0",
   "description": "A Compiler for the YeetScript Language",
   "author": "Sidharth Anand @sidharth-anand",
   "bin": {
     "YeetScriptCompiler": "./bin/run"
   },
-  "homepage": "https://github.com/sidharth-anand/yeetscript-compiler",
+  "homepage": "https://github.com/sidharth-anand/YeetScript",
   "license": "MIT",
   "main": "dist/index.js",
-  "repository": "sidharth-anand/yeetscript-compiler",
+  "repository": "sidharth-anand/YeetScript",
   "files": [
     "/bin",
     "/dist",
@@ -45,9 +45,6 @@
     "bin": "YeetScriptCompiler",
     "dirname": "YeetScriptCompiler",
     "commands": "./dist/commands",
-    "plugins": [
-      "@oclif/plugin-help"
-    ],
     "topicSeparator": " ",
     "topics": {}
   },

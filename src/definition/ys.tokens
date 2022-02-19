@@ -1,12 +1,18 @@
 [TOKENS]
     KEYWORD
     IDENTIFIER
-    WHITESPACE
+    
     DELIMITER
+
+    [WHITESPACES]
+        WHITESPACE
+        NEWLINE
 
     [LITERALS]
         INTEGER
         FLOAT
+        STRING
 
     [OPERATORS]
+        ARITHMETIC
         COMPARISON

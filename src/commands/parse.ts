@@ -1,4 +1,4 @@
-import { Command } from '@oclif/core';
+import { Command, Flags } from '@oclif/core';
 
 import Parser from '../compiler/parser';
 
@@ -7,6 +7,7 @@ export default class Parse extends Command {
 
   static examples = [
     '<%= config.bin %> <%= command.id %> main.ys',
+    '<%= config.bin %> <%= command.id %> main.ys --include-whitespaces --include-newlines',
   ];
 
   static args = [{
@@ -16,11 +17,27 @@ export default class Parse extends Command {
     parse: (input: any) => input.toString()
   }];
 
+  static flags = {
+    'include-newlines': Flags.boolean({
+      char: 'n',
+      default: false,
+      required: false
+    }),
+    'include-whitespaces': Flags.boolean({
+      char: 'w',
+      default: false,
+      required: false,
+    }),
+  };
+
   public async run(): Promise<void> {
-    const {args} = await this.parse(Parse)
-    console.log(args.file);
+    const {args, flags} = await this.parse(Parse);
     
     const parser = new Parser(args.file, 'src/definition/ys.classes', 'src/definition/ys.rules', 'src/definition/ys.states', 'src/definition/ys.tokens');
-    parser.parse();
+    const tokens = parser.parse(flags['include-whitespaces'], flags['include-newlines']);
+
+    for (const token of tokens) {
+      console.log(token.toFormattedString());
+    }
   }
 }

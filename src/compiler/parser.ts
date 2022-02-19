@@ -1,4 +1,5 @@
 import Lexer from './lexer';
+import Token from './token';
 
 import { readFileSync } from 'fs';
 
@@ -18,11 +19,17 @@ export default class Parser {
         });
     }
 
-    public parse() {
-        const tokens = this._lexer.tokenize(this._input);
+    public parse(includeWhitespaces: boolean = false, includeNewlines: boolean = false): Array<Token> {
+        let tokens = this._lexer.tokenize(this._input);
 
-        for (const token of tokens) {
-            console.log(token.toFormattedString());
+        if(!includeWhitespaces) {
+            tokens = tokens.filter(token => token.information.name !== 'WHITESPACE');
         }
+
+        if(!includeNewlines) {
+            tokens = tokens.filter(token => token.information.name !== 'NEWLINE');
+        }
+
+        return tokens;
     }
 }

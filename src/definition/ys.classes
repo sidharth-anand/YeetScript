@@ -1,5 +1,28 @@
 [KEYWORDS]
     int
+    short
+    long
+    float
+    string
+    if
+    else
+    while
+    for
+    do
+    break
+    continue
+    void
+    yeet
+    const
+    enum
+    include
+    boolean
+    cap
+    nocap
+    meth
+    and
+    or
+    not
 
 [UPPERCASE]
     [A-Z]
@@ -14,6 +37,26 @@
 [DIGIT]
     [0-9]
 
+[IDENTIFIER]
+    [a-z]
+    [A-Z]
+    [0-9]
+    _
+
+[ARITHMETIC]
+    +
+    -
+    *
+    /
+    %
+
+[LOGICAL]
+    &
+    |
+    !
+    ?
+    :
+
 [COMPARISON]
     <
     >
@@ -24,3 +67,26 @@
 [DELIMITER]
     :
     ;
+    {
+    }
+    [
+    ]
+    (
+    )
+    ,
+
+[QUOTE]
+    '
+    "
+
+[NEWLINE]
+    \n
+
+[ESCAPES]
+    n
+    t
+    r
+    f
+    b
+    a
+    \
