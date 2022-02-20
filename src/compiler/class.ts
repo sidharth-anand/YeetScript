@@ -3,9 +3,9 @@
  * Class to represent a match target.
  */
 export default class Class {
-    private _name: string;
-    private _rawContents: Array<string>;
-    private matches: Array<RegExp>;
+  private _name: string;
+  private _rawContents: Array<string>;
+  private matches: Array<RegExp>;
 
     constructor(name: string, contents: Array<string>) {
       this._name = name

@@ -1,0 +1,6 @@
+meth literal(): int{
+    a: int = +987;
+    b: float = -23.67;
+    c: string = "hello world";
+    yeet 0;
+}

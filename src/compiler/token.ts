@@ -1,6 +1,6 @@
 import * as chalk from 'chalk'
 
-import {TokenInformation} from './tokenInformation'
+import {TokenInformation} from './tokenInformation';
 
 /**
  * Class to represent lanugage tokens
@@ -46,7 +46,7 @@ export default class Token {
     }
 
     public toString(): string {
-      return `${this._tokenString} (${this._lineNumber}, ${this._characterNumber})`
+        return `${this._tokenString} ${this._information.name} (${this._lineNumber}, ${this._characterNumber})`;
     }
 
     public toFormattedString(): string {

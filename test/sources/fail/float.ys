@@ -1,0 +1,4 @@
+meth floatfail(): int{
+    b: float = -05.;
+    yeet 0;
+}

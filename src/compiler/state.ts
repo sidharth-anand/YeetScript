@@ -29,11 +29,11 @@ export default class State {
      * @returns matching rule, else error
      */
     public getMatchingRule(character: string): Rule {
-      const matchingRule: Rule | undefined = this._outgoingRules.find(rule => rule.doesRuleMatch(character))
+        const matchingRule: Rule | undefined = this._outgoingRules.find(rule => rule.doesRuleMatch(character));
 
-      if (matchingRule)
-        return matchingRule
+        if (matchingRule)
+            return matchingRule;
 
-      throw new Error(`No matching rule found for state ${this._name} and character ${character}`)
+        throw new Error(`No matching rule found for state ${this._name} and character ${character}`);
     }
 }

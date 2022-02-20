@@ -1,7 +1,7 @@
-import Class from './class'
-import State from './State'
+import Class from './class';
+import State from './state';
 
-import {TokenInformation} from './tokenInformation'
+import {TokenInformation} from './tokenInformation';
 
 /**
  * Class to represent lanugage rules
@@ -37,8 +37,8 @@ export default class Rule {
      * @returns true if rule match, false otherwise
      */
     public doesRuleMatch(character: string): boolean {
-      if (character.length > 1)
-        throw new Error('The doesRuleMatch function accepts only single characters')
+        if (character.length > 1)
+            throw new Error('The doesRuleMatch function accepts only single characters');
 
       if (typeof this._matchAgainst === 'string')
         return this._matchAgainst === '**' || this._matchAgainst === character

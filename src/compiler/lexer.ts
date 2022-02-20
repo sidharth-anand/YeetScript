@@ -3,22 +3,22 @@ import Rule from './rule'
 import State from './state'
 import Token from './token'
 
-import {LanguageDefinition} from './definition'
-import {TokenInformation} from './tokenInformation'
+import {LanguageDefinition} from './definition';
+import {TokenInformation} from './tokenInformation';
 
-import {readFileSync} from 'node:fs'
+import {readFileSync} from 'fs';
 
 /**
  * Lexer for YeetScript
  */
 export default class Lexer {
-    private _languageDefinition: LanguageDefinition;
+  private _languageDefinition: LanguageDefinition;
 
-    private _classes: Array<Class> = [];
-    private _states: Array<State> = [];
-    private _tokenTypes: Array<TokenInformation> = [];
+  private _classes: Array<Class> = [];
+  private _states: Array<State> = [];
+  private _tokenTypes: Array<TokenInformation> = [];
 
-    private _currentState: State;
+  private _currentState: State;
 
     /**
      * Creates an instance of lexer.
@@ -52,7 +52,9 @@ export default class Lexer {
       let processedCharacters: Array<string> = []
 
       // Looping through the input string character by character
-      for (const [i, character] of input.entries()) {
+      for (let i = 0; i < input.length; i++) {
+        const character = input[i];
+
         // Ignoring carriage return
         if (character == '\r') {
           continue

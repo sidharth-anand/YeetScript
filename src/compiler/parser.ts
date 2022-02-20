@@ -1,7 +1,7 @@
 import Lexer from './lexer'
 import Token from './token'
 
-import {readFileSync} from 'node:fs'
+import {readFileSync} from 'fs';
 
 /**
  * Parser: contains functions to parse the source code.
