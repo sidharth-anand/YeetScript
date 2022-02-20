@@ -1,0 +1,9 @@
+meth sum(n: int): int{
+    j: int;
+    sum: int = 0;
+    for (j = 1; j <= n; j++)
+    {
+        sum = sum + j;
+    }
+    yeet sum;
+}

@@ -1,7 +1,7 @@
 import Class from './class';
-import State from './State';
+import State from './state';
 
-import { TokenInformation } from './tokenInformation';
+import {TokenInformation} from './tokenInformation';
 
 export default class Rule {
     private _outgoingState: State;
@@ -24,7 +24,7 @@ export default class Rule {
 
     public doesRuleMatch(character: string): boolean {
         if (character.length > 1)
-            throw new Error("The doesRuleMatch function accepts only single characters");
+            throw new Error('The doesRuleMatch function accepts only single characters');
 
         if (typeof this._matchAgainst === 'string')
             return this._matchAgainst === '**' || this._matchAgainst === character;

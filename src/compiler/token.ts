@@ -1,6 +1,6 @@
 import * as chalk from 'chalk';
 
-import { TokenInformation } from "./tokenInformation";
+import {TokenInformation} from './tokenInformation';
 
 export default class Token {
     private _tokenString: string;
@@ -36,7 +36,7 @@ export default class Token {
     }
 
     public toString(): string {
-        return `${this._tokenString} (${this._lineNumber}, ${this._characterNumber})`;
+        return `${this._tokenString} ${this._information.name} (${this._lineNumber}, ${this._characterNumber})`;
     }
 
     public toFormattedString(): string {

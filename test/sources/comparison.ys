@@ -1,0 +1,24 @@
+meth func(a: int, b:int): int{
+    a: int = 9;
+    b: int = 5;
+    c: bool;
+    if(a > b){
+        c = cap;
+    }
+    if(a >= b){
+        c = cap;
+    }
+    if(a != b){
+        c = cap;
+    }
+    if(a < b){
+        c = nocap;
+    }
+    if(a <= b){
+        c = nocap;
+    }
+    if(a == b){
+        c = nocap;
+    }
+    yeet 0;
+}

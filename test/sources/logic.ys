@@ -1,0 +1,11 @@
+meth logic(): enum{boolean, boolean, boolean}{
+    a: bool = cap;
+    b: bool = nocap;
+    resa: bool;
+    resb: bool;
+    resc: bool;
+    a && b == cap ? resa = cap : resa = nocap;
+    a || b == cap ? resb = cap : resb = nocap;
+    resc = !resa;
+    yeet {resa, resb, resc};
+}

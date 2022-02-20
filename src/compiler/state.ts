@@ -18,10 +18,10 @@ export default class State {
 
     public getMatchingRule(character: string): Rule {
         const matchingRule: Rule | undefined = this._outgoingRules.find(rule => rule.doesRuleMatch(character));
-        
+
         if (matchingRule)
             return matchingRule;
-        
+
         throw new Error(`No matching rule found for state ${this._name} and character ${character}`);
     }
 }

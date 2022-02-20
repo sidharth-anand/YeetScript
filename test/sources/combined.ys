@@ -1,0 +1,15 @@
+meth func(): int{
+    sum:int = 0;
+    n: int = +10;
+    x: float = 5.0;
+    for(i:int = 0; i < n; i++){
+        if(i % 2 == 0 && i > x)
+        {
+            sum = sum * i;
+        }
+        else{
+            sum = sum / i;
+        }
+    }
+    yeet 0;
+}

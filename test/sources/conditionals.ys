@@ -1,0 +1,12 @@
+meth func(x: int, y:int): int{
+    num1:int = x;
+    num2:int = y;
+    if(num1 > num2)
+    {
+        yeet num1;
+    }
+    else{
+        yeet num2;
+    }
+    yeet 0;
+}
