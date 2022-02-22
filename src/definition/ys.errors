@@ -1,0 +1,4 @@
+STATE_ZERO - Do not prefix integer/float literals with leading 0s.
+STATE_STRING_INVALID - Do not have line breaks inside string. Use \n if you want strings spanning multiple lines.
+STATE_DIGIT_DOT - Do not leave digits after a decimal point empty.
+STATE_INVALID_IDENTIFIER - Identifiers may only start with uppercase/lowercase characters and not with digits or special characters.

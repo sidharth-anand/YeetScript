@@ -1,4 +1,4 @@
 meth intfail(): int{
-    a: int = +05;
+a: int = +05;
     yeet 0;
 }

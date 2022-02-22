@@ -28,12 +28,7 @@ export default class State {
      * @param character
      * @returns matching rule, else error
      */
-    public getMatchingRule(character: string): Rule {
-        const matchingRule: Rule | undefined = this._outgoingRules.find(rule => rule.doesRuleMatch(character));
-
-        if (matchingRule)
-            return matchingRule;
-
-        throw new Error(`No matching rule found for state ${this._name} and character ${character}`);
+    public getMatchingRule(character: string): Rule | undefined {
+        return this._outgoingRules.find(rule => rule.doesRuleMatch(character));
     }
 }

@@ -5,4 +5,5 @@ export type LanguageDefinition = {
     rules: string;
     states: string;
     tokens: string;
+    errors: string;
 }

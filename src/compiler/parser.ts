@@ -18,7 +18,7 @@ export default class Parser {
      * @param statesFile relative path to the file with the state definitions
      * @param tokensFile relative path to the file with the token definitions
      */
-    constructor(inputFile: string, classesFile: string, rulesFile: string, statesFile: string, tokensFile: string) {
+    constructor(inputFile: string, classesFile: string, rulesFile: string, statesFile: string, tokensFile: string, errorsFile: string) {
       this._input = readFileSync(inputFile).toString()
 
       this._lexer = new Lexer({
@@ -27,6 +27,7 @@ export default class Parser {
         rules: rulesFile,
         states: statesFile,
         tokens: tokensFile,
+        errors: errorsFile
       })
     }
 

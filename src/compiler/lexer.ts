@@ -1,3 +1,5 @@
+import * as chalk from 'chalk';
+
 import Class from './class'
 import Rule from './rule'
 import State from './state'
@@ -17,6 +19,7 @@ export default class Lexer {
   private _classes: Array<Class> = [];
   private _states: Array<State> = [];
   private _tokenTypes: Array<TokenInformation> = [];
+  private _errorMessages: Map<string, string> = new Map<string, string>();
 
   private _currentState: State;
 
@@ -25,14 +28,15 @@ export default class Lexer {
      * @param languageDefinition: An object of LanguageDefinition which contains the classes, rules, states, and tokens to use.
      */
     constructor(languageDefinition: LanguageDefinition) {
-      this._languageDefinition = languageDefinition
+      this._languageDefinition = languageDefinition;
 
-      this.initializeClasses()
-      this.initializeStates()
-      this.initializeTokenTypes()
-      this.initializeRules()
+      this.initializeClasses();
+      this.initializeStates();
+      this.initializeTokenTypes();
+      this.initializeRules();
+      this.initializeErrors();
 
-      this._currentState = this._states[0]
+      this._currentState = this._states[0];
     }
 
     /**
@@ -41,8 +45,8 @@ export default class Lexer {
      * @returns tokenize: An array of the tokens in the input string
      */
     public tokenize(input: string): Array<Token> {
-      input = input.replace('\t', ' ')
-      input = input.replace('    ', ' ')
+      input = input.replace('\t', ' ');
+      input = input.replace('    ', ' ');
 
       const tokens: Array<Token> = []
 
@@ -67,7 +71,24 @@ export default class Lexer {
         }
 
         // Checking the current state for a match with the next character
-        const matchingRule = this._currentState.getMatchingRule(character)
+        const matchingRule = this._currentState.getMatchingRule(character);
+
+        if (matchingRule === undefined) {
+          const errorLocation = `${lineNumber}:${i - lastLineIndex + 1}`;
+          let errorMessage;
+
+          if (this._errorMessages.has(this._currentState.name)) {
+            errorMessage = this._errorMessages.get(this._currentState.name);
+          } else {
+            errorMessage = `No matching rule found from ${this._currentState.name} for character ${character}`;
+          }         
+
+          console.log(chalk.redBright(`\nLexer Failed::Fatal Error - ${errorMessage} (${errorLocation})`));
+          console.log(`${chalk.magentaBright(`Line ${lineNumber}. `)}${input.split('\n')[lineNumber - 1].replace('    ', '\t')}`);
+          console.log(chalk.redBright('^'.padStart(i - lastLineIndex - 2 + `Line ${lineNumber}. `.length)));
+
+          return [];
+        }
 
         // If there is a matching rule, then the current state is changed to the outgoing state and the character is added to the processed characters
         if (matchingRule.emitToken) {
@@ -91,14 +112,14 @@ export default class Lexer {
       //  Tokens are created from the characters in the processed characters array and are added to the array of tokens
       if (processedCharacters.length > 0) {
         // Get a matching rule for the last character
-        const matchingRule = this._currentState.getMatchingRule('\n')
+        const matchingRule = this._currentState.getMatchingRule('\n');
 
         // Emit token if there is a matching rule
-        if (matchingRule.emitToken) {
-          const tokenType = matchingRule.emitToken
+        if (matchingRule!.emitToken) {
+          const tokenType = matchingRule!.emitToken;
 
-          const token = new Token(processedCharacters.join(''), lineNumber, input.length - lastLineIndex, tokenType)
-          tokens.push(token)
+          const token = new Token(processedCharacters.join(''), lineNumber, input.length - lastLineIndex, tokenType);
+          tokens.push(token);
         }
       }
 
@@ -201,6 +222,12 @@ export default class Lexer {
           })
         }
       }
+    }
+
+    private initializeErrors(): void {
+      const errors = readFileSync(this._languageDefinition.errors);
+
+      errors.toString().split('\n').map(d => d.trim().split(' - ')).forEach(message => this._errorMessages.set(message[0], message[1]));
     }
 
     /**

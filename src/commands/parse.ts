@@ -60,7 +60,7 @@ export default class Parse extends Command {
   public async run(): Promise<void> {
       const {args, flags} = await this.parse(Parse);
 
-      const parser = new Parser(args.file, 'src/definition/ys.classes', 'src/definition/ys.rules', 'src/definition/ys.states', 'src/definition/ys.tokens');
+      const parser = new Parser(args.file, 'src/definition/ys.classes', 'src/definition/ys.rules', 'src/definition/ys.states', 'src/definition/ys.tokens', 'src/definition/ys.errors');
       const tokens = parser.parse(flags['include-whitespaces'], flags['include-newlines']);
 
       for (const token of tokens) {
