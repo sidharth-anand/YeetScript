@@ -1,31 +1,33 @@
 import {expect, test} from '@oclif/test';
-import {conditionalString} from '../tokens/conditionals';
-import {loopString} from '../tokens/loops';
-import {arithmeticString} from '../tokens/arithemtic';
+
 import {error} from 'console';
-import {comparisonString} from '../tokens/comparsion';
-import {literalString} from '../tokens/literals';
+
+import ConditionalString from '../tokens/conditionals.tokens';
+import LoopString from '../tokens/loops.tokens';
+import ArithmeticString from '../tokens/arithemtic.tokens';
+import ComparisonString from '../tokens/comparison.tokens';
+import LiteralString from '../tokens/literals.tokens';
 
 describe('parse', () => {
     test
         .stdout()
         .command(['parse', 'test/sources/conditionals.ys', '-p'])
         .it('Conditionals pass', ctx => {
-            expect(ctx.stdout).to.equal(conditionalString);
+            expect(ctx.stdout).to.equal(ConditionalString);
         });
 
     test
         .stdout()
         .command(['parse', 'test/sources/loops.ys', '-p'])
         .it('Loops pass', ctx => {
-            expect(ctx.stdout).to.equal(loopString);
+            expect(ctx.stdout).to.equal(LoopString);
         });
 
     test
         .stdout()
         .command(['parse', 'test/sources/arithmetic.ys', '-p'])
         .it('Arithmetic pass', ctx => {
-            expect(ctx.stdout).to.equal(arithmeticString);
+            expect(ctx.stdout).to.equal(ArithmeticString);
         });
 
     test
@@ -39,14 +41,14 @@ describe('parse', () => {
         .stdout()
         .command(['parse', 'test/sources/comparison.ys', '-p'])
         .it('comparison pass', ctx => {
-            expect(ctx.stdout).to.equal(comparisonString);
+            expect(ctx.stdout).to.equal(ComparisonString);
         });
 
     test
         .stdout()
         .command(['parse', 'test/sources/literals.ys', '-p'])
         .it('literal pass', ctx => {
-            expect(ctx.stdout).to.equal(literalString);
+            expect(ctx.stdout).to.equal(LiteralString);
         });
 
     test
