@@ -26,7 +26,7 @@ const tokens = [
         fullyQualifiedName: 'TOKENS/OPERATORS/COMPARISON',
     }),
     new Token('x', 2, 15, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
-    new Token(';', 3, 1, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token(';', 2, 16, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
     new Token('num2', 3, 7, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
     new Token(':', 3, 11, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
     new Token('int', 3, 12, {name: 'KEYWORD', fullyQualifiedName: 'TOKENS/KEYWORD'}),

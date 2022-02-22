@@ -1,7 +1,7 @@
 import Lexer from './lexer'
 import Token from './token'
 
-import {readFileSync} from 'fs';
+import {readFileSync, writeFileSync} from 'fs';
 
 /**
  * Parser: contains functions to parse the source code.
@@ -53,6 +53,6 @@ export default class Parser {
         tokens = tokens.filter(token => token.information.name !== 'COMMENT')
       }
 
-      return tokens
+      return tokens;
     }
 }

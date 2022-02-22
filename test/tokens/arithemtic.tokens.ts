@@ -1,254 +1,146 @@
 import Token from '../../src/compiler/token';
 
 const tokens = [
-    new Token('meth', 1, 1, {
-        name: 'KEYWORD',
-        fullyQualifiedName: 'TOKENS/KEYWORD',
-    }),
-    new Token('func', 1, 6, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
-    }),
-    new Token('(', 1, 10, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
-    }),
-    new Token('x', 1, 11, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
-    }),
-    new Token(':', 1, 12, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
-    }),
-    new Token('int', 1, 14, {
-        name: 'KEYWORD',
-        fullyQualifiedName: 'TOKENS/KEYWORD',
-    }),
-    new Token(',', 1, 17, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
-    }),
-    new Token('y', 1, 19, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
-    }),
-    new Token(':', 1, 20, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
-    }),
-    new Token('int', 1, 21, {
-        name: 'KEYWORD',
-        fullyQualifiedName: 'TOKENS/KEYWORD',
-    }),
-    new Token(')', 1, 24, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
-    }),
+    new Token('meth', 1, 1, {name: 'KEYWORD', fullyQualifiedName: 'TOKENS/KEYWORD'}),
+    new Token('func', 1, 6, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token('(', 1, 10, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('x', 1, 11, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token(':', 1, 12, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('int', 1, 14, {name: 'KEYWORD', fullyQualifiedName: 'TOKENS/KEYWORD'}),
+    new Token(',', 1, 17, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('y', 1, 19, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token(':', 1, 20, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('int', 1, 21, {name: 'KEYWORD', fullyQualifiedName: 'TOKENS/KEYWORD'}),
+    new Token(')', 1, 24, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
     new Token(':', 1, 25, {
         name: 'COMPARISON',
         fullyQualifiedName: 'TOKENS/OPERATORS/COMPARISON',
     }),
-    new Token('int', 1, 27, {
-        name: 'KEYWORD',
-        fullyQualifiedName: 'TOKENS/KEYWORD',
+    new Token('int', 1, 27, {name: 'KEYWORD', fullyQualifiedName: 'TOKENS/KEYWORD'}),
+    new Token('{', 2, 1, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('add', 2, 5, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token(':', 2, 8, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('int', 2, 10, {name: 'KEYWORD', fullyQualifiedName: 'TOKENS/KEYWORD'}),
+    new Token(',', 2, 13, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('sub', 2, 15, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token(':', 2, 18, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('int', 2, 19, {name: 'KEYWORD', fullyQualifiedName: 'TOKENS/KEYWORD'}),
+    new Token(';', 3, 1, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('mul', 3, 5, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token(':', 3, 8, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('float', 3, 10, {name: 'KEYWORD', fullyQualifiedName: 'TOKENS/KEYWORD'}),
+    new Token(',', 3, 15, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('div', 3, 17, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token(':', 3, 20, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('float', 3, 21, {name: 'KEYWORD', fullyQualifiedName: 'TOKENS/KEYWORD'}),
+    new Token(';', 4, 1, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('add', 4, 5, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token('=', 4, 9, {
+        name: 'COMPARISON',
+        fullyQualifiedName: 'TOKENS/OPERATORS/COMPARISON',
     }),
-    new Token('{', 2, 1, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
+    new Token('x', 4, 11, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token('+', 4, 13, {
+        name: 'ARITHMETIC',
+        fullyQualifiedName: 'TOKENS/OPERATORS/ARITHMETIC',
     }),
-    new Token('{', 3, 1, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
-    }),
-    new Token('add', 3, 5, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
-    }),
-    new Token(':', 3, 8, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
-    }),
-    new Token('int', 3, 10, {
-        name: 'KEYWORD',
-        fullyQualifiedName: 'TOKENS/KEYWORD',
-    }),
-    new Token(',', 3, 13, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
-    }),
-    new Token('sub', 3, 15, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
-    }),
-    new Token(':', 3, 18, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
-    }),
-    new Token('int', 3, 19, {
-        name: 'KEYWORD',
-        fullyQualifiedName: 'TOKENS/KEYWORD',
-    }),
-    new Token(';', 4, 1, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
-    }),
-    new Token('mul', 4, 5, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
-    }),
-    new Token(':', 4, 8, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
-    }),
-    new Token('float', 4, 10, {
-        name: 'KEYWORD',
-        fullyQualifiedName: 'TOKENS/KEYWORD',
-    }),
-    new Token(',', 4, 15, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
-    }),
-    new Token('div', 4, 17, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
-    }),
-    new Token(':', 4, 20, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
-    }),
-    new Token('float', 4, 21, {
-        name: 'KEYWORD',
-        fullyQualifiedName: 'TOKENS/KEYWORD',
-    }),
-    new Token(';', 5, 1, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
-    }),
-    new Token('add', 5, 5, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
-    }),
+    new Token('y', 4, 15, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token(';', 5, 1, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('sub', 5, 5, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
     new Token('=', 5, 9, {
         name: 'COMPARISON',
         fullyQualifiedName: 'TOKENS/OPERATORS/COMPARISON',
     }),
-    new Token('x', 5, 11, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
-    }),
-    new Token('+', 5, 13, {
+    new Token('x', 5, 11, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token('-', 5, 13, {
         name: 'ARITHMETIC',
         fullyQualifiedName: 'TOKENS/OPERATORS/ARITHMETIC',
     }),
-    new Token('y', 5, 15, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
-    }),
-    new Token(';', 6, 1, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
-    }),
-    new Token('sub', 6, 5, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
-    }),
+    new Token('y', 5, 15, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token(';', 6, 1, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('mul', 6, 5, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
     new Token('=', 6, 9, {
         name: 'COMPARISON',
         fullyQualifiedName: 'TOKENS/OPERATORS/COMPARISON',
     }),
-    new Token('x', 6, 11, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
-    }),
-    new Token('-', 6, 13, {
+    new Token('x', 6, 11, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token('*', 6, 13, {
         name: 'ARITHMETIC',
         fullyQualifiedName: 'TOKENS/OPERATORS/ARITHMETIC',
     }),
-    new Token('y', 6, 15, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
-    }),
-    new Token(';', 7, 1, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
-    }),
-    new Token('mul', 7, 5, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
-    }),
+    new Token('y', 6, 15, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token(';', 7, 1, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('div', 7, 5, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
     new Token('=', 7, 9, {
         name: 'COMPARISON',
         fullyQualifiedName: 'TOKENS/OPERATORS/COMPARISON',
     }),
-    new Token('x', 7, 11, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
-    }),
-    new Token('*', 7, 13, {
+    new Token('x', 7, 11, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token('/', 7, 13, {
         name: 'ARITHMETIC',
         fullyQualifiedName: 'TOKENS/OPERATORS/ARITHMETIC',
     }),
-    new Token('y', 7, 15, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
+    new Token('(', 7, 15, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('float', 7, 16, {name: 'KEYWORD', fullyQualifiedName: 'TOKENS/KEYWORD'}),
+    new Token(')', 7, 21, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('y', 7, 22, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token(';', 8, 1, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('add', 9, 5, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token('++', 9, 8, {
+        name: 'ARITHMETIC',
+        fullyQualifiedName: 'TOKENS/OPERATORS/ARITHMETIC',
     }),
-    new Token(';', 8, 1, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
+    new Token(';', 10, 1, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('--', 10, 5, {
+        name: 'ARITHMETIC',
+        fullyQualifiedName: 'TOKENS/OPERATORS/ARITHMETIC',
     }),
-    new Token('div', 8, 5, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
-    }),
-    new Token('=', 8, 9, {
+    new Token('sub', 10, 7, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token(';', 11, 1, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('mul', 11, 5, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token('=', 11, 9, {
         name: 'COMPARISON',
         fullyQualifiedName: 'TOKENS/OPERATORS/COMPARISON',
     }),
-    new Token('x', 8, 11, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
-    }),
-    new Token('/', 8, 13, {
+    new Token('mul', 11, 11, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token('**', 11, 15, {
         name: 'ARITHMETIC',
         fullyQualifiedName: 'TOKENS/OPERATORS/ARITHMETIC',
     }),
-    new Token('(', 8, 15, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
+    new Token('2', 11, 18, {name: 'INTEGER', fullyQualifiedName: 'TOKENS/LITERALS/INTEGER'}),
+    new Token(';', 12, 1, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('add', 13, 5, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token('+=', 13, 9, {
+        name: 'ARITHMETIC',
+        fullyQualifiedName: 'TOKENS/OPERATORS/ARITHMETIC',
     }),
-    new Token('float', 8, 16, {
-        name: 'KEYWORD',
-        fullyQualifiedName: 'TOKENS/KEYWORD',
+    new Token('sub', 13, 12, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token(';', 14, 1, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('sub', 14, 5, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token('-=', 14, 9, {
+        name: 'ARITHMETIC',
+        fullyQualifiedName: 'TOKENS/OPERATORS/ARITHMETIC',
     }),
-    new Token(')', 8, 21, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
+    new Token('add', 14, 12, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token(';', 15, 1, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('mul', 15, 5, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token('*=', 15, 9, {
+        name: 'ARITHMETIC',
+        fullyQualifiedName: 'TOKENS/OPERATORS/ARITHMETIC',
     }),
-    new Token('y', 8, 22, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
+    new Token('div', 15, 12, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token(';', 16, 1, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('div', 16, 5, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token('/=', 16, 9, {
+        name: 'ARITHMETIC',
+        fullyQualifiedName: 'TOKENS/OPERATORS/ARITHMETIC',
     }),
-    new Token(';', 9, 1, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
-    }),
-    new Token('return', 9, 5, {
-        name: 'IDENTIFIER',
-        fullyQualifiedName: 'TOKENS/IDENTIFIER',
-    }),
-    new Token('0', 9, 12, {
-        name: 'INTEGER',
-        fullyQualifiedName: 'TOKENS/LITERALS/INTEGER',
-    }),
-    new Token(';', 10, 1, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
-    }),
-    new Token('}', 10, 3, {
-        name: 'DELIMITER',
-        fullyQualifiedName: 'TOKENS/DELIMITER',
-    }),
+    new Token('mul', 16, 12, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token(';', 17, 1, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('return', 18, 5, {name: 'IDENTIFIER', fullyQualifiedName: 'TOKENS/IDENTIFIER'}),
+    new Token('0', 18, 12, {name: 'INTEGER', fullyQualifiedName: 'TOKENS/LITERALS/INTEGER'}),
+    new Token(';', 19, 1, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
+    new Token('}', 19, 3, {name: 'DELIMITER', fullyQualifiedName: 'TOKENS/DELIMITER'}),
 ];
 
 export default tokens.reduce((str: string, token: Token) => str + token.toString() + '\n', '');
