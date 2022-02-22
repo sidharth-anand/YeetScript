@@ -1,6 +1,9 @@
-# a test function
-
-meth func(): int{
+/*
+* A test function
+* @param {int} abc - the first parameter
+* @returns {int} - the result
+*/
+meth func(abc: int): int{
     sum:int = 0;
 
     n: int = +10;
@@ -12,6 +15,7 @@ meth func(): int{
         }
         else{
             sum = sum / i;
+            sum /= i;
         }
     }
     yeet 0;

@@ -40,8 +40,14 @@ export default class Parse extends Command {
           default: false,
           required: false,
       }),
-      'include-color': Flags.boolean({
-          char: 'c',
+      'include-comments': Flags.boolean({
+        char: 'c',
+        default: false,
+        required: false
+      }),
+
+      'plain-output': Flags.boolean({
+          char: 'p',
           default: false,
           required: false,
       }),
@@ -58,7 +64,7 @@ export default class Parse extends Command {
       const tokens = parser.parse(flags['include-whitespaces'], flags['include-newlines']);
 
       for (const token of tokens) {
-          if (flags['include-color']) {
+          if (flags['plain-output']) {
               console.log(token.toString());
           } else {
               console.log(token.toFormattedString());
