@@ -23,6 +23,10 @@
     or
     not
     tuple
+    import
+    from
+    as
+    export
 
 [UPPERCASE]
     [A-Z]
