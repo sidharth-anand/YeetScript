@@ -1,11 +1,13 @@
-meth logic(): enum{boolean, boolean, boolean}{
+meth logic(): tuple{boolean, boolean, boolean} {
     a: bool = cap;
     b: bool = nocap;
     resa: bool;
     resb: bool;
     resc: bool;
-    a && b == cap ? resa = cap : resa = nocap;
-    a || b == cap ? resb = cap : resb = nocap;
+
+    resa = cap if a and b == cap else resa = nocap;
+    resb = cap if a or b == cap else resb = nocap;
+
     resc = !resa;
     yeet {resa, resb, resc};
 }

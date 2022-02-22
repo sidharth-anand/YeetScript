@@ -78,6 +78,7 @@ export default class Lexer {
           if (keywordsClass && keywordsClass.checkMatch(processedCharacters.join(''))) tokenType = this._tokenTypes.find(tokenType => tokenType.name === 'KEYWORD')!
 
           const token = new Token(processedCharacters.join(''), lineNumber, i - processedCharacters.length - lastLineIndex + 1, tokenType)
+          console.log(token.toFormattedString());
           tokens.push(token)
 
           processedCharacters = []

@@ -1,5 +1,4 @@
 meth func(x: int, y:int): int{
-{
   add: int, sub:int;
   mul: float, div:float;
   add = x + y;

@@ -1,4 +1,4 @@
 meth floatfail(): int{
-    b: float = -05.;
+    b: float = -5.;
     yeet 0;
 }

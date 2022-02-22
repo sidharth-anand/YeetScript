@@ -1,5 +1,5 @@
 meth func(x: int, y:int): int{
-    num1:int = x;
+    num1:int = x;           
     num2:int = y;
     if(num1 > num2)
     {

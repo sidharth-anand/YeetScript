@@ -1,4 +1,5 @@
-meth func(a: int, b:int): int{
+meth func(a: int, b:int): int
+{
     a: int = 9;
     b: int = 5;
     c: bool;

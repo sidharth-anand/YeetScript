@@ -1,9 +1,10 @@
 meth func(): int{
     sum:int = 0;
+
     n: int = +10;
     x: float = 5.0;
     for(i:int = 0; i < n; i++){
-        if(i % 2 == 0 && i > x)
+        if(i % 2 == 0 and i > x)
         {
             sum = sum * i;
         }
