@@ -4,6 +4,8 @@
     
     DELIMITER
 
+    COMMENT
+
     [WHITESPACES]
         WHITESPACE
         NEWLINE

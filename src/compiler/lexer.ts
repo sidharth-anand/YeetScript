@@ -71,17 +71,16 @@ export default class Lexer {
 
         // If there is a matching rule, then the current state is changed to the outgoing state and the character is added to the processed characters
         if (matchingRule.emitToken) {
-          let tokenType = matchingRule.emitToken
+          let tokenType = matchingRule.emitToken;
 
-          const keywordsClass = this._classes.find(classDefinition => classDefinition.name === 'KEYWORDS')
+          const keywordsClass = this._classes.find(classDefinition => classDefinition.name === 'KEYWORDS');
 
-          if (keywordsClass && keywordsClass.checkMatch(processedCharacters.join(''))) tokenType = this._tokenTypes.find(tokenType => tokenType.name === 'KEYWORD')!
+          if (keywordsClass && keywordsClass.checkMatch(processedCharacters.join(''))) tokenType = this._tokenTypes.find(tokenType => tokenType.name === 'KEYWORD')!;
 
-          const token = new Token(processedCharacters.join(''), lineNumber, i - processedCharacters.length - lastLineIndex + 1, tokenType)
-          console.log(token.toFormattedString());
-          tokens.push(token)
+          const token = new Token(processedCharacters.join(''), lineNumber, i - processedCharacters.length - lastLineIndex + 1, tokenType);
+          tokens.push(token);
 
-          processedCharacters = []
+          processedCharacters = [];
         }
 
         processedCharacters.push(character)

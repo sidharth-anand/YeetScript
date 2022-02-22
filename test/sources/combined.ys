@@ -1,3 +1,5 @@
+# a test function
+
 meth func(): int{
     sum:int = 0;
 

@@ -10,7 +10,7 @@ export default class Class {
     constructor(name: string, contents: Array<string>) {
       this._name = name
       this._rawContents = contents
-      this.matches = contents.map(classContent => classContent.length == 1 ? new RegExp(this.escapeRegExp(classContent)) : new RegExp(classContent))
+      this.matches = contents.map(classContent => classContent.length == 1 ? new RegExp(this.escapeRegExp(classContent)) : new RegExp(`^${classContent}$`))
     }
 
     public get rawContents(): Array<string> {

@@ -5,5 +5,15 @@ meth func(x: int, y:int): int{
   sub = x - y;
   mul = x * y;
   div = x / (float)y;
+
+  add++;
+  --sub;
+  mul = mul ** 2;
+
+  add += sub;
+  sub -= add;
+  mul *= div;
+  div /= mul;
+
   return 0;
 }
