@@ -1,22 +1,80 @@
-/*
-* A test function
-* @param {int} abc - the first parameter
-* @returns {int} - the result
+/**
+* Tokenizes the input string
+* @param input: The input string to extract tokens from
+* @returns tokenize: An array of the tokens in the input string
 */
-meth func(abc: int): int{
-    sum:int = 0;
 
-    n: int = +10;
-    x: float = 5.0;
-    for(i:int = 0; i < n; i++){
-        if(i % 2 == 0 and i > x)
-        {
-            sum = sum * i;
+
+/**
+* CodeStyle 1 - camelCase + same line braces + whitespaces + double-quotes
+*/
+
+meth tokenize(input: string, length: n): array{string} {
+    tokens: array{string} = [];
+    anotherVariable: tuple{string, int, boolean} = {"asd", 1, cap};
+
+    lineNumber: int = 1;
+    lastLineIndex: int = 0;
+
+    processedCharacters: array<char> = [];
+
+    # Looping through input string
+    for(i: int = 0; i < length; i++) {
+        character: char = input[i];
+
+        # Ignoring carraige return
+        if (character == "\r") {
+            continue;
         }
-        else{
-            sum = sum / i;
-            sum /= i;
+
+        # Incrementing line number
+        if (character == "\n") {
+            lineNumber++;
+            lastLineIndex = i - 1;
+        }
+
+        processedCharacters[i] = character;
+    }
+
+    if (pLen > 0) {
+        if(emitToken) {
+            tokenType: string = emitTokenType;
         }
     }
-    yeet 0;
+
+    yeet tokens;
+}
+
+/**
+* CodeStyle 2 - snake_case + new line braces + no whitespaces
+*/
+
+meth tokenize(input:string, length:int):array{string}
+{
+    tokens:array{string}={'asd','qwe', 'qweqwe', 'asdAsdasd'};
+    another_variable:tuple{string,int,boolean}={'asd',1,nocap};
+
+    line_number:int=1, last_line_index:int = 0;
+
+    processed_characters:array{string}=[];
+
+    for(i:int=0;i<length;)
+    {
+        if(character=='\r')
+            continue;#Ignore carraige return
+
+        if(character=='\n')
+        {
+            line_number++;#Incrementing line number on newline
+            last_line_index=i-1;
+        }
+
+        processed_characters[i]=character;
+
+        if(p_len>0)
+            if(emitToken)
+                token_type:string=emit_token_type;
+
+        yeet tokens;
+    }
 }
