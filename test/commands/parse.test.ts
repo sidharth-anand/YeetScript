@@ -1,7 +1,5 @@
 import {expect, test} from '@oclif/test';
 
-import {error} from 'console';
-
 import ConditionalString from '../tokens/conditionals.tokens';
 import LoopString from '../tokens/loops.tokens';
 import ArithmeticString from '../tokens/arithemtic.tokens';
@@ -57,21 +55,28 @@ describe('parse', () => {
         .stdout()
         .command(['parse', 'test/sources/fail/int.ys', '-p'])
         .it('Int literal fail', ctx => {
-            expect(ctx.stdout).to.equal(error);
+            expect(ctx.stdout).to.contain('Lexer Failed::Fatal Error');
         });
 
     test
         .stdout()
         .command(['parse', 'test/sources/fail/float.ys', '-p'])
         .it('Float literal fail', ctx => {
-            expect(ctx.stdout).to.equal(error);
+            expect(ctx.stdout).to.contain('Lexer Failed::Fatal Error');
         });
 
     test
         .stdout()
         .command(['parse', 'test/sources/fail/string.ys', '-p'])
         .it('String literal fail', ctx => {
-            expect(ctx.stdout).to.equal(error);
+            expect(ctx.stdout).to.contain('Lexer Failed::Fatal Error');
+        });
+
+    test
+        .stdout()
+        .command(['parse', 'test/sources/fail/identifier.ys', '-p'])
+        .it('Invalid indentifier fail', ctx => {
+            expect(ctx.stdout).to.contain('Lexer Failed::Fatal Error');
         });
 
     test
