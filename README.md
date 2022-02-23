@@ -84,6 +84,9 @@ All the files related to the language definition can be found in _[src/definitio
 
 The transition rules for the DFA are at _[ys.rules](https://github.com/sidharth-anand/YeetScript/tree/master/src/definition/ys.rules)_ and the BNF for YeetScript is at _[ys.bnf](https://github.com/sidharth-anand/YeetScript/tree/master/src/definition/ys.bnf)_
 
+![YeetScript DFA](images/dfa.png)
+<sub>_[DFA.png](https://github.com/sidharth-anand/YeetScript/tree/master/images/dfa.png)_ for the original high-res image</sub>
+
 # Testing 
 
 To test the project you can simply run
