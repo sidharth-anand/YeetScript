@@ -10,13 +10,13 @@
 */
 
 meth tokenize(input: string, length: n): array{string} {
-    tokens: array{string} = [];
+    tokens: array{string}[3] = ["", "", ""];
     anotherVariable: tuple{string, int, boolean} = {"asd", 1, cap};
 
     lineNumber: int = 1;
     lastLineIndex: int = 0;
 
-    processedCharacters: array<char> = [];
+    processedCharacters: array{char}[3] = ['','',''];
 
     # Looping through input string
     for(i: int = 0; i < length; i++) {
@@ -51,29 +51,36 @@ meth tokenize(input: string, length: n): array{string} {
 
 meth tokenize(input:string, length:int):array{string}
 {
-    tokens:array{string}={'asd','qwe', 'qweqwe', 'asdAsdasd'};
+    tokens:array{string}[4]={'asd','qwe', 'qweqwe', 'asdAsdasd'};
     another_variable:tuple{string,int,boolean}={'asd',1,nocap};
 
-    line_number:int=1, last_line_index:int = 0;
+    line_number:int=1;
+    last_line_index:int = 0;
 
-    processed_characters:array{string}=[];
+    processed_characters:array{string}[3]=[];
 
     for(i:int=0;i<length;)
     {
         if(character=='\r')
-            continue;#Ignore carraige return
+        {
+            continue;
+            #Ignore carraige return
+        }
 
         if(character=='\n')
         {
-            line_number++;#Incrementing line number on newline
+            line_number++;
+            #Incrementing line number on newline
             last_line_index=i-1;
         }
 
         processed_characters[i]=character;
 
-        if(p_len>0)
-            if(emitToken)
+        if(p_len>0){
+            if(emitToken){
                 token_type:string=emit_token_type;
+            }
+        }
 
         yeet tokens;
     }

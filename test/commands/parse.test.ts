@@ -7,6 +7,8 @@ import LoopString from '../tokens/loops.tokens';
 import ArithmeticString from '../tokens/arithemtic.tokens';
 import ComparisonString from '../tokens/comparison.tokens';
 import LiteralString from '../tokens/literals.tokens';
+import LogicString from '../tokens/logic.tokens';
+import CombinedString from '../tokens/combined.tokens';
 
 describe('parse', () => {
     test
@@ -34,7 +36,7 @@ describe('parse', () => {
         .stdout()
         .command(['parse', 'test/sources/logic.ys', '-p'])
         .it('Logic pass', ctx => {
-            expect(ctx.stdout).to.equal(error);
+            expect(ctx.stdout).to.equal(LogicString);
         });
 
     test
@@ -76,6 +78,6 @@ describe('parse', () => {
         .stdout()
         .command(['parse', 'test/sources/combined.ys', '-p'])
         .it('Combined Test', ctx => {
-            expect(ctx.stdout).to.equal(error);
+            expect(ctx.stdout).to.equal(CombinedString);
         });
 });
