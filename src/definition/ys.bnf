@@ -1,0 +1,73 @@
+	// *********DELIMITERS*********
+    
+    Lparen ::= ws-opt DELIMITER[(] ws-opt
+    Rparen ::= ws-opt DELIMITER[)] ws-opt
+    LSquare ::= ws-opt DELIMITER[\[] ws-opt
+    RSquare ::= ws-opt DELIMITER[\]] ws-opt
+    SemiColon ::= ws-opt DELIMITER[;] ws-opt
+    LCurly ::= ws-opt DELIMITER[{] ws-opt
+    RCurly ::= ws-opt DELIMITER[}] ws-opt
+    Comma ::= ws-opt DELIMITER[,] ws-opt
+    Colon ::= ws-opt DELIMITER[;] ws-opt
+    Equals ::= ws-opt DELIMITER[=] ws-opt
+    ws ::= DELIMITER[\s] {DELIMITER[\s]}
+    ws-opt ::= {DELIMITER[\s]}
+    Qmark ::= ws-opt DELIMITER[?] ws-opt
+    
+ 
+    // *******KEYWORDS********
+    ARRAY ::= ws-opt KEYWORD[array] ws-opt
+    IF ::= ws-opt KEYWORD[if] ws-opt
+    ELSE ::= ws-opt KEYWORD[else] ws-opt
+    WHILE ::= ws-opt KEYWORD[while] ws-opt
+    FOR ::= ws-opt KEYWORD[for] ws-opt
+    BREAK ::= ws-opt KEYWORD[break] ws-opt
+    CONTINUE ::= ws-opt KEYWORD[continue] ws-opt
+    METH ::= ws-opt KEYWORD[meth] ws-opt
+    YEET ::= ws-opt KEYWORD[yeet] ws-opt
+    ELIF ::= ws-opt KEYWORD[elif] ws-opt
+ 
+    //**********TYPES**********
+    INT ::= ws-opt KEYWORD[int] ws-opt
+    STRING ::= ws-opt KEYWORD[string] ws-opt
+    BOOL ::= ws-opt KEYWORD[boolean] ws-opt
+    VOID ::= ws-opt KEYWORD[void] ws-opt
+    FLOAT ::= ws-opt KEYWORD[float] ws-opt
+     
+     
+ 
+    //********VARIABLES AND TYPES*********
+    TYPE :: = ws-opt (INT | STRING | BOOL | VOID | FLOAT) ws-opt | ARRAY LCurly (INT | STRING | BOOL | VOID | FLOAT) RCurly LSquare LITERALS[integer] RSquare
+    
+    //*********STATEMENTS AND EXPRESSIONS**********
+     
+    Statement ::= VarDeclararionStatement | ArithmeticStatement | IfElseStatement | WhileStatement | ForStatement | ReturnStatement
+    StatementList ::= Statement SemiColon {Statement SemiColon}
+    Block ::= LCurly StatementList RCurly
+    ArithmeticStatement ::= Expression SemiColon
+    IfElseStatement ::= IF Lparen Expression Rparen Block {ELIF Block} [ELSE Block]
+    WhileStatement ::= WHILE Lparen Expression Rparen Block
+    ForStatement ::= FOR Lparen VarDeclararionStatement LogicalExpression SemiColon Expression Block
+    ReturnStatement ::= YEET ws-opt (Expression | KEYWORD) SemiColon
+    SimpleStatement ::= Expression SemiColon
+    VarDeclararionStatement ::= ws-opt IDENTIFIER Colon Type [EQUALS Expression] SemiColon
+    Expression ::= ArithmeticExpression | FunctionCall | LogicalExpression | TernaryExpression
+    ArithmeticExpression ::= Expression (PLUS | MINUS | MULTIPLY | DIVIDE | MODULO | POWER) Expression | MINUS Expression | NOT Expression | Lparen Expression Rparen
+    FunctionCall ::= IDENTIFIER Lparen (Expression {Comma Expression} Rparen
+    LogicalExpression ::= LogicalExpression (AND | OR | XOR) LogicalExpression | NOT LogicalExpression | Lparen Expression Rparen | IDENTIFIER | INTEGER | FLOAT | STRING
+    ReferenceExpression ::= IDENTIFIER | INTEGER | FLOAT | STRING
+    AssignmentExpression ::= IDENTIFIER EQUALS Expression
+    TernaryExpression ::= Expression IF Expression ELSE Expression
+    UnaryExpression ::= (PLUS | MINUS | NOT) Expression
+    ArrayIndexingExpression ::= IDENTIFIER LSquare Expression RSquare
+ 
+ 
+    // ************FUNCTIONS**************
+    FunctionDeclaration ::= KEYWORD ws IDENTIFIER ws-opt CallSignature Block SemiColon
+    CallSignature ::= Lparen ws-opt ArgumentList ws-opt Rparen Colon TYPE
+    ArgumentList ::= Argument {Comma Argument} ws-opt
+    Argument ::= ws-opt IDENTIFIER Colon Type
+	
+    //***********IMPORT STATEMENTS***********
+     ImportStatement ::= IMPORT ws-opt IDENTIFIER ws-opt FROM STRING ws-opt
+     
