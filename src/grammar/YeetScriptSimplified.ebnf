@@ -1,0 +1,148 @@
+Program -> FunctionDeclaration
+
+
+
+
+Lparen -> DELIMITER[(]
+Rparen -> DELIMITER[)]
+Lcurly -> DELIMITER[{]
+Rcurly -> DELIMITER[}]
+Lsquare -> DELIMITER[[]
+Rsquare -> DELIMITER[]]
+Comma -> DELIMITER[,]
+Colon -> COMPARISON[:]
+Qmark -> DELIMITER[?]
+Equals -> COMPARISON[=]
+SemiColon -> DELIMITER[;]
+PLUS -> ARITHMETIC[+]
+MINUS -> ARITHMETIC[-]
+MULTIPLY -> ARITHMETIC[*]
+DIVIDE -> ARITHMETIC[/]
+MODULO -> ARITHMETIC[%]
+
+AND -> COMPARISON[&&]
+AND -> KEYWORD[and]
+OR -> COMPARISON[||]
+OR -> KEYWORD[or]
+NOT -> COMPARISON[!]
+NOT -> KEYWORD[not]
+ISEQUALTO -> COMPARISON[==]
+NOTEQUALTO -> COMPARISON[!=]
+LESS -> COMPARISON[<]
+GREATER -> COMPARISON[>]
+LESSEQUALS -> COMPARISON[<=]
+GREATEREQUALS -> COMPARISON[>=]
+
+
+ARRAY -> array
+IF -> KEYWORD[if]
+ELSE -> KEYWORD[else]
+WHILE -> KEYWORD[while]
+FOR -> KEYWORD[for]
+BREAK -> KEYWORD[break]
+CONTINUE -> KEYWORD[continue]
+METH -> KEYWORD[meth]
+ELIF -> KEYWORD[elif]
+YEET -> KEYWORD[yeet]
+
+INT -> KEYWORD[int]
+FLOAT -> KEYWORD[float]
+STRING -> KEYWORD[string]
+BOOL -> KEYWORD[bool]
+VOID -> KEYWORD[void]
+
+TYPE -> INT 
+TYPE -> FLOAT 
+TYPE -> STRING
+TYPE -> BOOL
+TYPE -> VOID
+
+
+Statement -> VarDeclarationStatement
+Statement -> ArithmeticStatement
+Statement -> IfElseStatement
+Statement -> WhileStatement
+Statement -> ForStatement
+Statement -> ReturnStatement
+StatementList -> Statement SemiColon StatementRest
+StatementRest -> ''
+StatementRest -> StatementList
+
+Block -> Lcurly StatementList Rcurly
+ArithmeticStatement -> Expression
+
+
+AssignmentExpression -> IDENTIFIER Equals Expression
+
+IfElseStatement -> IF Lparen Expression Rparen Block ELIFChain ELSEOPTION
+ELIFChain -> ELIF Block ELIFRest
+ELIFChain -> ''
+ELIFRest -> ''
+ELIFRest -> ELIFChain
+ELSEOPTION -> ELSE Block
+ELSEOPTION -> ''
+
+WhileStatement -> WHILE Lparen Expression Rparen Block
+ForStatement -> FOR Lparen VarDeclarationStatement SemiColon LogicalExpression SemiColon AssignmentExpression Rparen Block
+
+ReturnStatement -> YEET ReturnStatementRest
+ReturnStatementRest -> ''
+ReturnStatementRest -> Expression
+ReturnStatementRest -> IDENTIFIER
+
+VarDeclarationStatement -> KEYWORD[let] IDENTIFIER Colon TYPE VarDeclarationStatementRest
+VarDeclarationStatementRest -> ''
+VarDeclarationStatementRest -> Equals Expression
+
+Expression -> ArithmeticExpression
+Expression -> FunctionCall
+Expression -> LogicalExpression
+Expression -> TernaryExpression
+Expression -> AssignmentExpression
+Expression -> Term
+Expression -> Lparen Expression Rparen
+Term -> INTEGER
+Term -> FLOAT
+Term -> STRING
+Term -> KEYWORD[cap]
+Term -> KEYWORD[nocap]
+Term -> IDENTIFIER
+
+Term -> Lparen Expression Rparen
+Term -> Expression
+
+ArithmeticExpression -> Term PLUS Term
+ArithmeticExpression -> Term MINUS Term
+ArithmeticExpression -> Term MULTIPLY Term
+ArithmeticExpression -> Term DIVIDE Term
+ArithmeticExpression -> Term MODULO Term
+ArithmeticExpression -> MINUS Term
+ArithmeticExpression -> Lparen Term Rparen
+
+FunctionCall -> IDENTIFIER Lparen Args Rparen
+Args -> Expression ArgsRest
+Args -> ''
+ArgsRest -> ''
+ArgsRest -> Comma Expression ArgsRest
+
+LogicalExpression -> Term AND Term
+LogicalExpression -> Term OR Term
+LogicalExpression -> Term ISEQUALTO Term
+LogicalExpression -> Term NOTEQUALTO Term
+LogicalExpression -> Term LESS Term
+LogicalExpression -> Term GREATER Term
+LogicalExpression -> Term LESSEQUALS Term
+LogicalExpression -> Term GREATEREQUALS Term
+LogicalExpression -> NOT Term
+
+TernaryExpression -> Expression IF Expression ELSE Expression
+ArrayIndexingExpression -> IDENTIFIER Lsquare Expression Rsquare
+
+FunctionDeclaration -> METH IDENTIFIER CallSignature Colon TYPE Block
+CallSignature -> Lparen CallSignatureRest
+CallSignatureRest -> ArgumentList Rparen
+ArgumentList -> ''
+ArgumentList -> Argument ArgumentListRest
+ArgumentListRest -> ''
+ArgumentListRest -> Comma ArgumentList
+Argument -> IDENTIFIER Colon TYPE

@@ -1,6 +1,6 @@
 import {Command, Flags} from '@oclif/core';
 
-import Parser from '../compiler/parser'
+import Parser from '../compiler/parser';
 
 /**
  * Reads a file written in YeetScript and parses it into a list of tokens
