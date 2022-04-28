@@ -57,11 +57,12 @@ export default class ParseTable {
     
         if (actionElement?.toString() === 'r0') {
             console.log('Parsed succesful');
-            return stack[0];
+            return stack[1];
         }
     
         console.log('Parsing failed');
-        return stack;
+        console.log(stack);
+        return null;
     }
     
 }

@@ -47,20 +47,17 @@ export default class LRTable {
         for (let i = 0; i < closureTable.kernels.length; i++) {
             const kernel = closureTable.kernels[i];
             const state = new LRState(this.states.length);
-            console.log(kernel.keys.length, kernel.closure.length);
             this.states.push(state);
 
             for (let j = 0; j < kernel.keys.length; j++) {
                 const key = kernel.keys[j];
                 const nextStateIndex = kernel.gotos[key];
-                console.log(state.index, key, nextStateIndex);
 
                 state.addToKey(key, new LRAction((closureTable.grammar.terminals.has(key) ? 's' : ''), nextStateIndex));
             }
 
             for (let j = 0; j < kernel.closure.length; j++) {
                 const item = kernel.closure[j];
-                console.log(item.dotIndex, item.rule.development.length, item.rule.development[0], item.rule.index, item.lookAheads);
 
                 if (item.dotIndex === item.rule.development.length || item.rule.development[0] === this.EPSILON) {
                     for (let k = 0; k < item.lookAheads.length; k++) {

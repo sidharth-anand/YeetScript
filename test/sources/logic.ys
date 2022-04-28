@@ -1,13 +1,13 @@
-meth logic(): tuple{boolean, boolean, boolean} {
-    a: bool = cap;
-    b: bool = nocap;
-    resa: bool;
-    resb: bool;
-    resc: bool;
+meth logic(): boolean {
+    let a: boolean = cap;
+    let b: boolean = nocap;
+    let resa: boolean;
+    let resb: boolean;
+    let resc: boolean;
 
     resa = cap if a and b == cap else resa = nocap;
     resb = cap if a or b == cap else resb = nocap;
 
     resc = !resa;
-    yeet {resa, resb, resc};
+    yeet cap;
 }

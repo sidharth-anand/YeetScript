@@ -54,7 +54,7 @@ export default class Token {
     }
 
     public toParser(): string {
-        if (!(this._information.name === 'IDENTIFIER')) {
+        if (!(this._information.name === 'IDENTIFIER') && !this._information.fullyQualifiedName.includes("LITERAL")) {
             return `${this._information.name}[${this._tokenString}] `;
         }
 

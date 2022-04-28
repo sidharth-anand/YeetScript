@@ -1,22 +1,13 @@
 meth func(x: int, y:int): int{
-  add: int;
-  sub:int;
-  mul: float;
-  div:float;
+  let add: int;
+  let sub:int;
+  let mul: float;
+  let div:float;
   
   add = x + y;
   sub = x - y;
   mul = x * y;
-  div = x / (float)y;
-
-  add++;
-  --sub;
-  mul = mul ** 2;
-
-  add += sub;
-  sub -= add;
-  mul *= div;
-  div /= mul;
-
+  div = x / y;
+  
   yeet 0;
 }

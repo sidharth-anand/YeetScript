@@ -1,8 +1,8 @@
 import {Command} from '@oclif/core';
 import Parser from '../compiler/parser';
-import {readFileSync} from 'fs';
+import {readFileSync, writeFileSync} from 'fs';
 import ParseTable from '../compiler/parseTable';
-// import YeetScriptSimplified from '../grammar/YeetScriptSimplified.ebnf';
+import {formatTree} from '../compiler/treeView';
 
 export default class Ast extends Command {
   static description = 'Determine if sequence of tokens is valid and generate AST'
@@ -16,6 +16,14 @@ export default class Ast extends Command {
       required: true,
       description: 'Path to the YeetScript file to parse',
       ast: (input: any) => input.toString(),
+  }, {
+      name: 'template',
+      required: false,
+      default: 'render/parse.html'
+  }, {
+      name: 'output',
+      required: false,
+      default: 'images/parse.html'
   }]
 
   public async run(): Promise<void> {
@@ -31,10 +39,13 @@ export default class Ast extends Command {
       const tokensPassed = (tokenString + '$').split(' ');
       console.log(tokenString);
 
-      const urmom = readFileSync('src/grammar/YeetScriptSimplified.ebnf').toString();
+      const rules = readFileSync('src/grammar/YeetScriptSimplified.ebnf').toString();
 
-      const parseTable = new ParseTable(tokensPassed, urmom);
-      const output = parseTable.parseInput();
-      console.log(output);
+      const parseTable = new ParseTable(tokensPassed, rules);
+      const parseTree = parseTable.parseInput();
+      const treeString = formatTree(parseTree);
+
+      const treeTemplate = readFileSync(args.template).toString();
+      writeFileSync(args.output, treeTemplate.replace('%parsetree%', treeString));
   }
 }

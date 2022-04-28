@@ -10,6 +10,7 @@ Rcurly -> DELIMITER[}]
 Lsquare -> DELIMITER[[]
 Rsquare -> DELIMITER[]]
 Comma -> DELIMITER[,]
+Colon -> DELIMITER[:]
 Colon -> COMPARISON[:]
 Qmark -> DELIMITER[?]
 Equals -> COMPARISON[=]
@@ -17,6 +18,7 @@ SemiColon -> DELIMITER[;]
 PLUS -> ARITHMETIC[+]
 MINUS -> ARITHMETIC[-]
 MULTIPLY -> ARITHMETIC[*]
+POWER -> ARITHMETIC[**]
 DIVIDE -> ARITHMETIC[/]
 MODULO -> ARITHMETIC[%]
 
@@ -48,7 +50,7 @@ YEET -> KEYWORD[yeet]
 INT -> KEYWORD[int]
 FLOAT -> KEYWORD[float]
 STRING -> KEYWORD[string]
-BOOL -> KEYWORD[bool]
+BOOL -> KEYWORD[boolean]
 VOID -> KEYWORD[void]
 
 TYPE -> INT 
@@ -114,6 +116,7 @@ Term -> Expression
 ArithmeticExpression -> Term PLUS Term
 ArithmeticExpression -> Term MINUS Term
 ArithmeticExpression -> Term MULTIPLY Term
+ArithmeticExpression -> Term POWER Term
 ArithmeticExpression -> Term DIVIDE Term
 ArithmeticExpression -> Term MODULO Term
 ArithmeticExpression -> MINUS Term
