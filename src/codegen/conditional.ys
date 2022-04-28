@@ -1,0 +1,4 @@
+if (cap)
+    yeet 1;
+else:
+    yeet 2;
